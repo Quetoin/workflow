@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+  <head>
+  	<meta charset="utf-8">
+  	<title>Agence de location de vélo</title>   
+    <meta name="viewport" content="width=device-width, user-scalable=1.0">
+    <meta name="description" content="Agence de location de vélo à Toulouse">
+    <meta name="author" content="Quentin Armanville">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="CSS/MarkerCluster.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="CSS/MarkerCluster.Default.css" media="all"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+    
+  </head>
+
+<body>
+
+    <!-- HEADER, logo -->
+  <header>
+    <img src="img/logoVelo.png" class="headerComponent" id="logoAgence" alt="Image Logo">
+    <div id="titres" class="headerComponent">
+      <h1 id="titreSiteh1"> Agence de location de vélo à Toulouse </h1>
+      <h2 id="titreSiteh2">Bienvenue sur le site de l'agence de location de vélo de la ville de Toulouse.</h2>
+    </div>
+  </header>
+
+  <section id="diaporama">
+
+    <div id="photos_txt">
+
+      <div id="photos" class="sectionDiapo">
+
+        <figure id="figureDiapo">
+          <img src="img/img0.png" class="imgDiapo" id="img">
+          <figcaption>Explications fonctionnement du site</figcaption>
+        </figure>
+
+
+      </div>
+
+      <div id="textes" class="sectionDiapo">
+        <div id="txt0" class="txts">
+          <h3>Bienvenue sur l'application Vel'lib</h3>
+          <p>Vel'lib, la nouvelle application de location de vélo à Toulouse. Consultez la disponibilité, réservez et ... ridez !<br> <br> Ce diaporama vous présente les 4 étapes à suivre pour réserver un vélo</p>
+        </div>
+        <div id="txt1" class="txts">
+          <h3>Consultez les stations disponibles</h3>
+          <p> Vous pouvez consulter la carte de la ville avec toutes les stations disponibles en bleu. <br> <br>Cliquez sur un chiffre ou zoomez pour trouver une station en particulier. <br><br>Celles en jaune sont également disponibles mais il reste peu de vélos, dépéchez vous ! </p>
+        </div>
+        <div id="txt2" class="txts">
+          <h3>Choisissez votre station</h3>
+          <p>Cliquez sur la station de votre choix pour pouvoir réserver votre vélo. <br><br> Une fois cliqué sur la station, vous verrez son adresse, son nom, son statut ouvert ou fermé ainsi que le nombre de vélos disponibles.</p>
+        </div>
+        <div id="txt3" class="txts">
+          <h3>Vos coordonnées</h3>
+          <p>Vous n'avez plus qu'à remplir le formulaire avec vos noms et prénoms, signer dans le cadre prévu à cet effet et enfin cliquer sur le bouton valider pour pouvoir démarrer la réservation</p>
+        </div>
+        <div id="txt4" class="txts">
+          <h3>Validez!</h3>
+          <p>Et ... c'est parti pour 20 minutes de folie ... ou simplement de balade. <br><br> un compteur est mis en place pour vous indiquer le temps restant sur votre réservation.<br><br>Attention, vous ne pouvez faire qu'une réservation à la fois.</p>
+        </div>
+        
+      </div>
+    </div>
+
+    <div id="circlesDiapo">
+      <i class="fas fa-circle" id="circle0"></i>
+      <i class="fas fa-circle" id="circle1"></i>
+      <i class="fas fa-circle" id="circle2"></i>
+      <i class="fas fa-circle" id="circle3"></i>
+      <i class="fas fa-circle" id="circle4"></i>
+    </div>
+
+    <div id="buttonsDiapo">
+      <i class="fas fa-arrow-left" id="leftDiapo" onclick="maDiapo.moveBackward();"></i>
+      <i class="far fa-pause-circle" id="pauseDiapo" onclick="maDiapo.pause();"></i>
+      <i class="far fa-play-circle" id="playDiapo" onclick="maDiapo.play();"></i>
+      <i class="fas fa-arrow-right" id="rightDiapo" onclick="maDiapo.moveForward();"></i>
+     </div>
+    
+  </section>
+
+
+
+
+  <section id="carteVelo">
+    <!--  API MAPS + API VELO à mettre ici -->
+    <div id="mapid" class="carteVeloElement">
+      
+    </div>
+
+
+<!--  ***** Encart Disponibilités et statut de la station -->
+    <div id="disponibilites" class="carteVeloElement">
+      <div id="introDispo" class="intros">
+        <h3 id="titreDisponibilites">Disponibilités</h3>
+        <p class="introTxts">Choisissez une station pour connaître ses disponibilités</p>
+      </div>
+
+      <div class="dataStationResa">
+
+        <div id="titresDisponibilites" class="dispoResaTableau">
+          <div id="titreNomStation" class="lignesTableau yellowBackground">Nom de la station : </div>
+          <div id="titreAdresseStation" class="lignesTableau">Adresse : </div>
+          <div id="titreStatutStation" class="lignesTableau yellowBackground">Statut : </div>
+          <div id="titrePlacesStation" class="lignesTableau">Nombre de places : </div>
+          <div id="titreVelosStation" class="lignesTableau yellowBackground">Nombre de vélos : </div>
+        </div>
+
+        <div id="dataDisponibilites" class="dispoResaTableau">
+          <div id="nomStation" class="lignesTableau yellowBackground"></div>
+          <div id="adresseStation" class="lignesTableau"></div>
+          <div id="statutStation" class="lignesTableau yellowBackground"></div>
+          <div id="placesStation" class="lignesTableau"></div>
+          <div id="velosStation" class="lignesTableau yellowBackground"></div>
+        </div>
+      </div>
+      <button id="butReserver" onclick="startResa('showForm');" class="butReserverValider">Réserver</button>
+
+    </div>
+
+
+<!--  ***** Encart Reservation avec nom / prenom / signature -->
+    <div id="reservation" class="carteVeloElement">
+
+      <div id="introResa" class="intros">
+        <h3> Réservation</h3>
+        <p class="introTxts">Insérez les coordonnées demandées, signez et visualisez votre réservation</p>
+      </div>
+
+      <div id="formulaire" class="dataStationResa">
+
+        <div id="titresResa" class="dispoResaTableau">
+          <div id="nomResa" class="divForm"><p>Nom : </p></div>
+          <div id="prenomResa" class="divForm"><p>Prénom :</p></div>
+        </div>
+
+        <div id="dataResa" class="dispoResaTableau" style="display:flex;">
+          <input type="text" value="" id="inputNom" class="inputResa">
+          <input type="text" value="" id="inputPrenom" class="inputResa">
+        </div>
+
+      </div>
+
+       <canvas id="canvasSignature" width=250 height=250>
+      <!-- CANVAS a créer avec la signature -->
+      </canvas>
+
+      <button id="butValider" onclick="startResa('validerResa');" class="butReserverValider">Valider</button>
+
+    </div> <!--  Reservation -->
+
+  </section>
+
+
+  <section id="sectionResa">
+
+    <div id="titreResaConfirmee">
+      <h2>Ma réservation</h2>
+      <p>Vous trouverez ci-dessous les détails de votre réservation une fois que vous aurez validé avec votre signature</p>
+    </div>
+
+    <div id="dataResaConfirmee">
+      <div id="ifNoResa">
+        <p>Vous n'avez pas encore de réservation.<a href="#sectionDiapo">Cliquez ici</a> pour voir le fonctionnement. <br>Ou <a href="#carteVelo">ici</a> pour voir les disponibilités</p>
+      </div>
+      <div id="ifResa">
+        <p id="txt_resa">Vélo réservé à la station <span id="span_name_station"></span> par <span id="span_nom_prenom"></span></p>
+        <p id="tps_restant">
+          Temps restant : 20min
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+
+<footer>
+  
+  <div id="logo">
+    <img src="img/logoVelo.png" class="headerComponent" id="logoAgenceFooter" alt="Image logo">
+  </div>
+
+  <div id="connexion">
+    <button>S'inscrire</button>
+    <p>Déjà inscrit ?</p>
+    <button>Se connecter</button>
+  </div>
+
+  <div id="siteMap">
+    <a>Accueil</a>
+    <a>Accueil</a>
+    <a>Accueil</a>
+    <a>Accueil</a>
+  </div>
+
+</footer>
+
+<script>
+var myMapGlobal = [] ;
+var timerEnCours = false;
+var countdown = "";
+var canvasOrResa = "canvas";
+var signature = false;
+var stationEnCours = [];
+var isResaOrDispo = "dispo";
+
+
+</script>
+
+<script src="https://kit.fontawesome.com/586aab2eb8.js" crossorigin="anonymous"></script>
+<script src="JS/station.js"></script>
+<script src="JS/map.js"></script>
+<script src="JS/resa.js"></script>
+<script src="JS/timer.js"></script>
+<script src="JS/canvas.js"></script>
+<script src="JS/session.js"></script>
+<script src="JS/iconColors.js"></script>
+<script src="JS/diapo.js"></script>
+<script src="JS/leaflet.markercluster.js"></script>
+
+
+<script>
+  let timer1 = new Timer("new","tps_restant");
+  let map1 = new Map();
+  let sessionEnCours = new Session();
+  let maDiapo = new Diapo();
+  let canvas1 = new Canvas(document.getElementById("canvasSignature"));
+
+
+  function startResa(provenance){
+
+    if(provenance == "validerResa"){
+      let resa1 = new Reservation();
+
+    }else{
+
+      document.getElementById("reservation").style.display="flex";
+      document.getElementById("disponibilites").style.display="none";
+      sessionEnCours.verifLocalStorage();
+      isResaOrDispo = "resa";
+    }  
+  }
+
+
+
+</script>
+</body>
+
+</html>

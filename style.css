@@ -1,0 +1,435 @@
+@font-face {
+	font-family: "Happy Monkey"; 
+	src: url('happy-monkey/HappyMonkey-Regular.ttf') format("truetype");
+}
+
+@font-face{
+	font-family: 'Raleway', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body{
+	font-family: "Raleway";
+}
+
+/* </ ---- HEADER ---- */ 
+
+header{
+	display:flex;
+	justify-content: space-between;
+	margin-bottom:10px;
+}
+
+#logoAgence{
+	width:150px;
+	height:120px;
+	border-radius: 16px;
+	box-shadow: 12px 12px 0px 0px rgba(245,184,69,0.6);
+}
+
+#titres{
+	width:90%;
+	text-align: center;
+}
+
+
+/* /> ---- HEADER ---- */ 
+
+
+
+section{
+	margin:auto;
+	text-align:center;
+	margin-top: 50px;
+}
+
+
+
+/* </ ---- diapo ---- */ 
+
+
+#diaporama{
+	width:100%;
+	height:500px;
+	max-width:1640px;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgb(252,232,63);
+	border-radius:10px;
+	vertical-align: center;
+}
+
+#photos_txt{
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.sectionDiapo{
+	height:450px;
+	align-self: center;
+	display:flex;
+}
+
+#photos{
+	width:60%;
+}
+
+#textes{
+	width:40%;
+}
+
+#figureDiapo{
+	width:100%;
+	margin:0px;
+	align-self: center;
+}
+
+.imgDiapo{
+	max-width:100%;
+	max-height:420px;
+	border-radius:24px;
+}
+
+figcaption{
+	display:none;
+}
+
+.txts{
+	align-self: center;
+	display:flex;
+	flex-direction: column;
+}
+
+#playDiapo{
+	display:none;
+}
+
+#txt1, #txt2, #txt3, #txt4{
+	display:none;
+}
+
+#circlesDiapo{
+	display:inline;
+	margin-bottom:5px;
+}
+
+#circle0{
+	opacity:0.6;
+}
+
+/* /> ---- DIAPO ---- */ 
+
+
+
+
+
+
+/* </ ---- Map + Résa ---- */
+
+#carteVelo{
+	display:flex;
+	justify-content: center;
+	width:100%;
+}
+
+.carteVeloElement{
+	width:40%;
+	margin:20px;
+	padding:5px;
+	display:flex;
+	flex-direction: column;
+	box-shadow: 5px 5px 10px 0 #645c5c;
+	border-radius:10px;
+}
+
+.intros{
+	padding:10px;
+	background-color: rgba(59,161,209,0.7);
+	margin-bottom:20px;
+	border-radius:10px;
+}
+
+.introTxts{
+	font-size:0.8em;
+	font-style:italic;
+}
+
+#mapid{
+	width:500px;
+	height:550px;
+}
+
+/* Divs contenant les divs des titres et les données, que ce soit pour dispo ou résa */
+.dataStationResa{
+	display: flex;
+	flex-direction: row;
+	border-radius:10px;
+	background-color: white;
+}
+
+/* Divs contenant les titres et les données, que ce soit pour dispos ou résas */
+.dispoResaTableau{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width:50%;
+}
+
+.lignesTableau{
+	margin:10px 10px;
+	width:90%;
+	height:50px;
+	padding-top: 5px;
+}
+
+.yellowBackground{
+	background-color: rgba(252,232,63,0.7);
+	border-radius:12px;
+}
+
+.inputResa{
+	width:50%;
+	padding:5px;
+}
+
+/* Encart réservation non visible à l'ouverture de la page */
+#reservation{
+	display:none;
+}
+
+#formulaire{
+	background-color: rgba(252,232,63,0.7);
+}
+
+.butReserverValider{
+	width:100px;
+	padding:5px;
+	border-radius:25px;
+	align-self:center;
+	margin-top:25px;
+	cursor:pointer;
+}
+
+#canvasSignature{
+	border:1px pink solid;
+	width:250px;
+	height:250px;
+	cursor: crosshair;
+	align-self: center;
+	margin-top:10px;
+	background-color: white;
+}
+
+
+/* /> ---- Map + Résa ---- */
+
+
+
+
+
+/* ----- Section visualisation des données de réservation */
+
+
+#sectionResa{
+	width:100%;
+	max-width: 1540px;
+}
+
+#titreResaConfirmee{
+	background-color: rgba(252,232,63,0.7);
+	border-radius:10px;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+
+#dataResaConfirmee{
+	background-color: rgba(59,161,209,0.7);
+	border-radius:10px;
+	padding:5px;
+}
+
+#ifResa{
+	display:none;
+}
+
+
+
+footer{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top:150px;
+	background-color: rgba(104,104,104,0.7);
+	height:200px;
+}
+
+#logoAgenceFooter{
+	width:150px;
+	height:120px;
+	border-radius: 16px;
+	box-shadow: 12px 12px 0px 0px rgba(245,184,69,0.6);
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1080px){
+
+
+	#mapid{
+		width:380px;
+	}
+
+	.carteVeloElement{
+		margin:10px;
+		margin-top:20px;
+		width:50%;
+	}
+
+	#canvasSignature{
+		width:250px;
+		height:250px;
+	}
+
+}
+
+@media screen and (max-width: 959px){
+
+	#titres{
+		width:80%;
+		font-size:1.1em;
+	}
+
+	#diaporama{
+		height:650px;
+		width:90%;
+	}
+
+	#photos_txt{
+		flex-direction: column;
+		justify-content: space-between;
+		height:95%;
+	}
+
+	#buttonsDiapo{
+		height:5%;
+	}
+
+	.sectionDiapo{
+		height:50%;
+	}
+
+	.imgDiapo{
+		max-width:100%;
+		max-height:300px;
+	}
+
+	#photos{
+		width:100%;
+		height:60%;
+	}
+
+	#textes{
+		width:100%;
+		height:40%;
+	}
+
+	.txts{
+		align-self: flex-start;
+		padding:0px 10px;
+	}
+
+	#carteVelo{
+		display:flex;
+		justify-content: center;
+		flex-direction: column;
+		width:100%;
+	}
+
+	.carteVeloElement{
+		width:80%;
+		margin:auto;
+		margin-top:20px;
+	}
+
+	#mapid{
+		margin:auto;
+		width:550px;
+	}
+
+}
+
+@media screen and (max-width: 640px){
+
+	body{
+		min-width: 320px;
+		margin:0px;
+	}
+
+	header{
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	section{
+		margin-top:30px;
+	}
+
+	#logoAgence{
+		margin:auto;
+	}
+
+	#titres{
+		margin:auto;
+		width:90%;
+		font-size:0.7em;
+	}
+
+	#diaporama{
+		height:350px;
+	}
+
+	#photos{
+		display:none;
+	}
+
+
+	#mapid{
+		width:90%;
+		height:400px;
+		min-width: 320px;
+		margin:auto;
+	}
+
+	.carteVeloElement{
+		width:90%;
+		margin:auto;
+		margin-top:20px;
+	}
+
+	#disponibilites, #reservation{
+		height:600px;
+	}
+
+	.lignesTableau{
+		margin:2px;
+		padding-top:20px;
+		width:95%;
+		height:50px;
+		font-size:0.8em;
+	}
+
+}
+
+
